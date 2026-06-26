@@ -1,0 +1,387 @@
+.settingsScene {
+  --settings-ink: rgba(23, 49, 84, 0.94);
+  --settings-ink-muted: rgba(23, 49, 84, 0.68);
+  --settings-ink-faint: rgba(23, 49, 84, 0.56);
+  --settings-surface: rgba(255, 255, 255, 0.72);
+  --settings-surface-row: rgba(255, 255, 255, 0.54);
+  --settings-surface-input: rgba(255, 255, 255, 0.92);
+  --settings-border: rgba(164, 185, 223, 0.58);
+  --settings-border-subtle: rgba(164, 185, 223, 0.42);
+  --settings-nav-bg-top: color-mix(in srgb, var(--tm-system-accent, rgba(101, 191, 235, 0.24)) 18%, rgba(255, 255, 255, 0.72));
+  --settings-nav-bg-bottom: color-mix(in srgb, var(--tm-system-glow, rgba(101, 191, 235, 0.16)) 12%, rgba(255, 255, 255, 0.42));
+  --settings-nav-hover: rgba(255, 255, 255, 0.46);
+  --settings-nav-active: rgba(255, 255, 255, 0.72);
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  height: 100%;
+  padding: var(--tm-titlebar-clearance, 52px) clamp(0.9rem, 2vw, 1.4rem) clamp(1rem, 2vh, 1.4rem);
+  box-sizing: border-box;
+  color: var(--settings-ink);
+}
+
+:global(body[data-tm-tone='dark']) .settingsScene {
+  --settings-ink: rgba(219, 237, 255, 0.94);
+  --settings-ink-muted: rgba(195, 216, 240, 0.74);
+  --settings-ink-faint: rgba(175, 198, 228, 0.58);
+  --settings-surface: rgba(16, 24, 42, 0.78);
+  --settings-surface-row: rgba(22, 34, 56, 0.62);
+  --settings-surface-input: rgba(10, 16, 30, 0.94);
+  --settings-border: rgba(100, 140, 190, 0.44);
+  --settings-border-subtle: rgba(100, 140, 190, 0.28);
+  --settings-nav-bg-top: color-mix(in srgb, var(--tm-system-accent, rgba(101, 191, 235, 0.24)) 14%, rgba(16, 24, 42, 0.88));
+  --settings-nav-bg-bottom: color-mix(in srgb, var(--tm-system-glow, rgba(101, 191, 235, 0.16)) 10%, rgba(12, 18, 34, 0.82));
+  --settings-nav-hover: rgba(255, 255, 255, 0.08);
+  --settings-nav-active: rgba(255, 255, 255, 0.14);
+}
+
+.settingsPageHeader {
+  flex: 0 0 auto;
+  padding: 0.15rem 0 0.75rem;
+}
+
+.settingsPageTitle {
+  margin: 0;
+  font-size: clamp(1.55rem, 2.4vw, 1.95rem);
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--settings-ink);
+  text-shadow: 0 1px 10px rgba(5, 24, 58, 0.22);
+}
+
+:global(body[data-tm-tone='dark']) .settingsPageTitle {
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.42);
+}
+
+.settingsBody {
+  display: grid;
+  grid-template-columns: minmax(168px, 220px) minmax(0, 1fr);
+  gap: clamp(0.85rem, 1.6vw, 1.35rem);
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.settingsNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.5rem;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--active-ring, rgba(101, 191, 235, 0.42)) 34%, transparent);
+  background: linear-gradient(180deg, var(--settings-nav-bg-top), var(--settings-nav-bg-bottom));
+  overflow: auto;
+  min-height: 0;
+}
+
+.settingsNavButton {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.58rem 0.68rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--settings-ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.settingsNavButton:hover,
+.settingsNavButton:focus-visible {
+  background: var(--settings-nav-hover);
+  border-color: color-mix(in srgb, var(--active-ring, rgba(101, 191, 235, 0.42)) 40%, transparent);
+}
+
+.settingsNavButton.isActive {
+  background: var(--settings-nav-active);
+  border-color: color-mix(in srgb, var(--active-ring, rgba(101, 191, 235, 0.54)) 58%, transparent);
+  box-shadow: 0 8px 18px -14px color-mix(in srgb, var(--active-glow, rgba(101, 191, 235, 0.36)) 80%, transparent);
+}
+
+.settingsNavLabel {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.settingsContent {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding-right: 0.15rem;
+}
+
+.settingsSectionPane {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.settingsSectionTitle {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: var(--settings-ink);
+}
+
+.settingsCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 12px;
+  border: 1px solid var(--settings-border);
+  background: var(--settings-surface);
+  backdrop-filter: blur(10px);
+}
+
+.settingsRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.72rem 0.82rem;
+  border-radius: 10px;
+  background: var(--settings-surface-row);
+}
+
+.settingsRowStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.72rem 0.82rem;
+  border-radius: 10px;
+  background: var(--settings-surface-row);
+}
+
+.settingsRowCopy {
+  min-width: 0;
+}
+
+.settingsRowTitle {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--settings-ink);
+}
+
+.settingsRowDescription {
+  display: block;
+  margin-top: 0.18rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--settings-ink-muted);
+  line-height: 1.35;
+}
+
+.settingsRowControl {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.settingsRowControlWide {
+  width: 100%;
+}
+
+.settingsSliderWrap {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: min(220px, 100%);
+}
+
+.settingsSliderValue {
+  min-width: 2.6rem;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--settings-ink-muted);
+  text-align: right;
+}
+
+.settingsChipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.settingsChip {
+  border-radius: 999px;
+  border: 1px solid var(--settings-border);
+  background: var(--settings-surface-input);
+  color: var(--settings-ink);
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 0.34rem 0.72rem;
+  cursor: pointer;
+}
+
+.settingsChip.isSelected {
+  border-color: color-mix(in srgb, var(--active-ring, rgba(101, 191, 235, 0.72)) 72%, transparent);
+  background: color-mix(in srgb, var(--active-ring, rgba(101, 191, 235, 0.28)) 28%, var(--settings-surface-input));
+}
+
+.settingsNote {
+  margin: 0;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--settings-ink-muted);
+  line-height: 1.4;
+}
+
+.settingsActionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding: 0 0.82rem 0.35rem;
+}
+
+.settingsSectionKicker {
+  margin: 0.55rem 0.82rem 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--settings-ink-faint);
+}
+
+.controllerStatusBanner {
+  padding: 0.72rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid var(--settings-border);
+  background: var(--settings-surface-row);
+}
+
+.controllerStatusBanner.isConnected {
+  border-color: color-mix(in srgb, var(--active-ring, rgba(101, 191, 235, 0.54)) 58%, transparent);
+  background: color-mix(in srgb, var(--active-ring, rgba(101, 191, 235, 0.18)) 22%, var(--settings-surface-row));
+}
+
+.controllerStatusTitle {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--settings-ink);
+}
+
+.controllerStatusDetail {
+  margin: 0.28rem 0 0;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--settings-ink-muted);
+  line-height: 1.4;
+}
+
+.controllerBindList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0 0.35rem 0.35rem;
+}
+
+.controllerBindRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(140px, 220px);
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.55rem 0.72rem;
+  border-radius: 10px;
+  background: var(--settings-surface-row);
+}
+
+.controllerBindLabel {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--settings-ink);
+}
+
+.controllerBindSelect {
+  width: 100%;
+  min-width: 0;
+  padding: 0.38rem 0.55rem;
+  border-radius: 8px;
+  border: 1px solid var(--settings-border);
+  background: var(--settings-surface-input);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--settings-ink);
+}
+
+.settingsSelect {
+  min-width: min(180px, 100%);
+  padding: 0.38rem 0.55rem;
+  border-radius: 8px;
+  border: 1px solid var(--settings-border);
+  background: var(--settings-surface-input);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--settings-ink);
+}
+
+.settingsScene :global(button.ghost) {
+  border: 1px solid var(--settings-border);
+  background: var(--settings-surface-row);
+  color: var(--settings-ink);
+}
+
+.settingsScene :global(button.ghost:hover),
+.settingsScene :global(button.ghost:focus-visible) {
+  border-color: color-mix(in srgb, var(--active-ring, rgba(101, 191, 235, 0.54)) 58%, transparent);
+  background: color-mix(in srgb, var(--active-ring, rgba(101, 191, 235, 0.14)) 24%, var(--settings-surface-row));
+}
+
+.settingsScene input[type='range'] {
+  accent-color: color-mix(in srgb, var(--active-ring, rgba(101, 191, 235, 0.84)) 72%, #ffffff);
+}
+
+.controllerAdvancedDetails {
+  margin-top: 0.45rem;
+  padding: 0.35rem 0.35rem 0.55rem;
+  border-top: 1px solid var(--settings-border-subtle);
+}
+
+.controllerAdvancedSummary {
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: var(--settings-ink);
+  padding: 0.45rem 0.72rem;
+  border-radius: 8px;
+  list-style: none;
+}
+
+.controllerAdvancedSummary::-webkit-details-marker {
+  display: none;
+}
+
+.controllerAdvancedDetails[open] .controllerAdvancedSummary {
+  margin-bottom: 0.35rem;
+}
+
+.controllerAdvancedDetails .settingsNote {
+  padding: 0 0.72rem 0.55rem;
+}
+
+.quickSlider {
+  width: min(180px, 100%);
+}
+
+@media (max-width: 860px) {
+  .settingsBody {
+    grid-template-columns: 1fr;
+  }
+
+  .settingsNav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .settingsNavButton {
+    flex: 1 1 calc(50% - 0.35rem);
+  }
+}

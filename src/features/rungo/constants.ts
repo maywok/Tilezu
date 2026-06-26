@@ -1,0 +1,7 @@
+export const ROLL_CARD_GAP_PX = 10
+export const ROLL_FULL_CARD_WIDTH_PX = 88
+export const ROLL_COMPACT_CARD_WIDTH_PX = 74
+export const ROLL_RESOLVE_MS = 2000
+export const ROLL_TIER_FLASH_DURATION_MS = 800
+export const ROLL_TICK_MIN_INTERVAL_MS = 48
+export const COMPACT_GRID_SLOT_COUNT = 81

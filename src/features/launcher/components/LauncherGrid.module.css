@@ -1,0 +1,23 @@
+.gridPane {
+  --tm-grid-surface-alpha: 0.62;
+}
+
+.gridToolbar {
+  isolation: isolate;
+}
+
+.gridSection {
+  position: relative;
+}
+
+.gridList {
+  position: relative;
+}
+
+.scrollBody {
+  position: relative;
+}
+
+:global(body[data-tm-tone='dark']) .gridPane {
+  --tm-grid-surface-alpha: 0.62;
+}

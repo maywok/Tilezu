@@ -1,0 +1,63 @@
+{
+  "name": "tile-manager",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Tilezu — a personal game launcher for Windows (Tauri + React).",
+  "homepage": "https://github.com/maywok/Tilezu/releases/latest",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maywok/Tilezu.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:tauri": "tauri dev --config src-tauri/tauri.dev.conf.json",
+    "build": "tsc -b && vite build",
+    "build:tauri": "npm run clean:build-caches && powershell -ExecutionPolicy Bypass -File scripts\\build-release-app.ps1",
+    "clean:build-caches": "powershell -ExecutionPolicy Bypass -File scripts\\clean-build-caches.ps1",
+    "clean:build-caches:deep": "powershell -ExecutionPolicy Bypass -File scripts\\clean-build-caches.ps1 -Deep",
+    "copy:debug-app": "powershell -ExecutionPolicy Bypass -File scripts\\copy-debug-app.ps1",
+    "build:tauri:debug": "powershell -ExecutionPolicy Bypass -File scripts\\build-debug-app.ps1",
+    "build:tauri:debug:clean": "npm run clean:build-caches && powershell -ExecutionPolicy Bypass -File scripts\\build-debug-app.ps1",
+    "perf:reset": "powershell -ExecutionPolicy Bypass -File scripts\\perf-reset.ps1",
+    "perf:summary": "powershell -ExecutionPolicy Bypass -File scripts\\perf-summary.ps1 -LastRuns 8",
+    "perf:tail": "powershell -ExecutionPolicy Bypass -File scripts\\print-boot-perf-log.ps1 -Tail 120",
+    "release:report": "powershell -ExecutionPolicy Bypass -File scripts\\release-artifact-report.ps1",
+    "exe:refresh": "npm run build:tauri:debug",
+    "exe:run": "powershell -ExecutionPolicy Bypass -File scripts\\run-app.ps1",
+    "exe:run-saved": "powershell -ExecutionPolicy Bypass -File scripts\\run-app.ps1 -UseSavedOnly",
+    "exe:refresh-run": "npm run exe:refresh && npm run exe:run",
+    "target:trim": "powershell -ExecutionPolicy Bypass -File scripts\\trim-rust-target.ps1",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/nunito": "^5.2.7",
+    "@react-three/cannon": "^6.6.0",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "@tauri-apps/api": "^2.10.1",
+    "@tauri-apps/plugin-dialog": "^2.6.0",
+    "firebase": "^12.9.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "three": "^0.183.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@tauri-apps/cli": "^2.10.0",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.48.0",
+    "vite": "^5.4.11",
+    "vitest": "^4.1.2"
+  }
+}

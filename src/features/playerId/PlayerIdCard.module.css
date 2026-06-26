@@ -1,0 +1,399 @@
+.playerIdCard {
+  --id-accent: #5eb8e8;
+  --id-accent-soft: rgba(94, 184, 232, 0.22);
+  --id-border: rgba(94, 184, 232, 0.72);
+  --id-glow: rgba(94, 184, 232, 0.35);
+  --id-text-primary: #243047;
+  --id-text-muted: rgba(52, 64, 88, 0.82);
+  --id-banner-bg: var(--id-accent);
+  position: relative;
+}
+
+.chip {
+  position: relative;
+  width: 210px;
+  min-height: 72px;
+  border-radius: 12px;
+  border: 1.5px solid var(--id-border);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.96), rgba(236, 244, 255, 0.88));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 8px 18px var(--id-glow);
+  overflow: hidden;
+}
+
+.chipInner {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+}
+
+.chipBanner {
+  grid-column: 1 / -1;
+  height: 22px;
+  margin: -8px -10px 0;
+  background: var(--id-banner-bg) center / cover no-repeat;
+}
+
+.card {
+  width: 100%;
+  min-width: 480px;
+  max-width: 520px;
+  border-radius: 16px;
+  border: 1.5px solid var(--id-border);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.96), rgba(236, 244, 255, 0.88));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 18px 36px rgba(24, 36, 58, 0.18);
+  overflow: hidden;
+}
+
+.cardInteractive {
+  transform: perspective(900px) rotateX(var(--id-tilt-x, 0deg)) rotateY(var(--id-tilt-y, 0deg));
+  transition: transform 120ms ease-out;
+}
+
+.bannerRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 12px;
+  align-items: end;
+  min-height: 72px;
+  padding: 10px 14px 12px;
+  background: var(--id-banner-bg) center / cover no-repeat;
+}
+
+.bannerRowImage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 12, 20, 0.18), rgba(8, 12, 20, 0.42));
+  pointer-events: none;
+}
+
+.bannerRowSolid {
+  background: linear-gradient(135deg, var(--id-accent), color-mix(in srgb, var(--id-accent) 72%, #ffffff 28%));
+}
+
+.textToneLight {
+  --id-text-primary: rgba(248, 252, 255, 0.98);
+  --id-text-muted: rgba(230, 240, 255, 0.86);
+}
+
+.textToneDark {
+  --id-text-primary: #243047;
+  --id-text-muted: rgba(52, 64, 88, 0.82);
+}
+
+.avatarWrap {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 8px 18px rgba(8, 14, 24, 0.22);
+  flex: 0 0 auto;
+}
+
+.avatarWrapChip {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+}
+
+.avatarWrapCard {
+  width: 56px;
+  height: 56px;
+  margin-bottom: -18px;
+}
+
+.avatarImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarImagePixel {
+  image-rendering: pixelated;
+  filter: contrast(1.08) saturate(0.82) brightness(0.96);
+  transform: scale(1.04);
+}
+
+.avatarInitials {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  font-weight: 800;
+  color: var(--id-accent);
+}
+
+.avatarInitialsChip { font-size: 0.72rem; }
+.avatarInitialsCard { font-size: 0.95rem; }
+
+.identityBlock {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--id-text-muted);
+}
+
+.displayName {
+  margin: 2px 0 0;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: var(--id-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.displayNameChip {
+  margin: 0;
+  font-size: 0.72rem;
+}
+
+.statusLine {
+  margin: 3px 0 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--id-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.statusLineChip {
+  margin: 2px 0 0;
+  font-size: 0.58rem;
+}
+
+.bioLine {
+  margin: 4px 0 0;
+  font-size: 0.62rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--id-text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.body {
+  position: relative;
+  padding: 16px 14px 12px;
+}
+
+.contentRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) 64px minmax(0, 1fr);
+  gap: 10px;
+  align-items: stretch;
+}
+
+.heroGame {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 8px;
+  align-items: center;
+  min-height: 58px;
+  padding: 7px;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 136, 168, 0.22);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.heroCoverWrap,
+.showcaseCoverWrap {
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(18, 24, 36, 0.08);
+}
+
+.heroCoverWrap { width: 48px; height: 48px; }
+
+.heroCover,
+.showcaseCover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroMeta,
+.showcaseMeta { min-width: 0; }
+
+.heroLabel,
+.showcaseLabel {
+  display: block;
+  font-size: 0.54rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(58, 72, 98, 0.68);
+}
+
+.heroTitle,
+.showcaseTitle {
+  margin: 2px 0 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #243047;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.heroPlaytime {
+  margin: 2px 0 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: rgba(52, 64, 88, 0.72);
+}
+
+.heroEmpty {
+  display: grid;
+  place-items: center;
+  min-height: 58px;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px dashed rgba(120, 136, 168, 0.28);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: rgba(52, 64, 88, 0.62);
+}
+
+.systemSlot {
+  display: grid;
+  place-items: center;
+}
+
+.systemCardCompact {
+  width: 64px;
+  height: 64px;
+}
+
+.showcaseRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.showcaseSlot {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid rgba(120, 136, 168, 0.18);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.showcaseCoverWrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+}
+
+.showcaseEmpty {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 8px;
+  border: 1px dashed rgba(120, 136, 168, 0.24);
+  font-size: 0.54rem;
+  font-weight: 700;
+  color: rgba(52, 64, 88, 0.58);
+  text-align: center;
+  padding: 4px;
+}
+
+.statsLine {
+  margin: 10px 0 0;
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: rgba(46, 58, 82, 0.86);
+}
+
+.stickerLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.stickerLayerInteractive {
+  pointer-events: auto;
+}
+
+.stickerPlacement {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.stickerPlacementSelected {
+  outline: 2px dashed rgba(94, 184, 232, 0.88);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.stickerGraphic {
+  width: 100%;
+  height: 100%;
+}
+
+.chipStickerLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.chipSticker {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+}
+
+:global(body[data-tm-tone='dark']) .chip,
+:global(body[data-tm-tone='dark']) .card {
+  background: linear-gradient(155deg, rgba(28, 34, 48, 0.94), rgba(18, 22, 32, 0.92));
+}
+
+:global(body[data-tm-tone='dark']) .heroGame,
+:global(body[data-tm-tone='dark']) .showcaseSlot {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(body[data-tm-tone='dark']) .displayName,
+:global(body[data-tm-tone='dark']) .heroTitle,
+:global(body[data-tm-tone='dark']) .showcaseTitle {
+  color: rgba(244, 248, 255, 0.96);
+}
+
+:global(body[data-tm-tone='dark']) .statusLine,
+:global(body[data-tm-tone='dark']) .bioLine,
+:global(body[data-tm-tone='dark']) .statsLine,
+:global(body[data-tm-tone='dark']) .eyebrow,
+:global(body[data-tm-tone='dark']) .heroLabel,
+:global(body[data-tm-tone='dark']) .showcaseLabel,
+:global(body[data-tm-tone='dark']) .heroPlaytime,
+:global(body[data-tm-tone='dark']) .heroEmpty,
+:global(body[data-tm-tone='dark']) .showcaseEmpty {
+  color: rgba(214, 224, 240, 0.82);
+}

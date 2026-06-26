@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/logo/Tilezu.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tilezu</title>
+    <script>
+      document.addEventListener('contextmenu', function (event) {
+        var target = event.target
+        if (!target || !target.closest) return
+        if (target.closest('[data-allow-native-context-menu="true"]')) return
+        if (target.closest('input, textarea, select, [contenteditable="true"]')) return
+        event.preventDefault()
+        event.stopPropagation()
+        return false
+      }, true)
+    </script>
+  </head>
+  <body>
+    <div id="root">Application failed to load (no JS). Please check console.</div>
+    <script>
+      window.addEventListener('error', () => {
+        document.getElementById('root').textContent = 'App failed to load; check developer console.'
+      })
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

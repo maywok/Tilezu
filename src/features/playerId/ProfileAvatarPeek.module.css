@@ -1,0 +1,10 @@
+.peekAnchor {
+  position: fixed;
+  z-index: 120;
+  width: min(520px, calc(100vw - 16px));
+  pointer-events: none;
+}
+
+.peekCard {
+  width: 100%;
+}

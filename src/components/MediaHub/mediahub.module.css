@@ -1,0 +1,74 @@
+.mediaHubRoot {
+  position: relative;
+  margin-top: clamp(0.12rem, 0.08rem + 0.24vh, 0.32rem);
+  overflow: visible;
+}
+
+.mediaPreviewOffset {
+  margin-top: 0.06rem;
+}
+
+.mediaHubHeader {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.18rem;
+  padding: 0 0.1rem 0.1rem;
+  opacity: 0.55;
+  transition: opacity 0.15s ease;
+}
+
+.mediaHubHeader:hover {
+  opacity: 1;
+}
+
+.mediaHubToggleBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.1rem;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.2rem;
+  transition: background 0.12s ease;
+}
+
+.mediaHubToggleBtn:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.mediaHubToggleIcon {
+  width: 1em;
+  height: 1em;
+}
+
+.mediaHubPopout {
+  position: fixed;
+  bottom: 1.4rem;
+  right: 1.4rem;
+  width: 22rem;
+  z-index: 9000;
+  background: rgba(20, 20, 30, 0.72);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 1rem;
+  padding: 0.6rem 0.8rem 0.8rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.45);
+}
+
+.mediaHubPopoutHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.mediaHubPopoutTitle {
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

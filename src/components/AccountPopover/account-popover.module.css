@@ -1,0 +1,241 @@
+/* MAP_TOKEN_HERE -> var(--glass-bg), var(--glass-border), var(--accent), var(--radius), var(--space-2) */
+:global(.profile-action-rail).rail {
+  position: fixed;
+  top: var(--tm-account-popover-top, 58px) !important;
+  left: var(--tm-account-popover-left, 18px) !important;
+  right: auto !important;
+  z-index: 350;
+  pointer-events: auto;
+}
+
+:global(.profile-action-rail).rail::before,
+:global(.profile-action-rail).rail::after {
+  z-index: 0;
+}
+
+:global(.profile-action-rail).rail > * {
+  position: relative;
+  z-index: 1;
+}
+
+.rail :global(.profile-quick-panel) {
+  top: -0.2rem;
+}
+
+.railTopOrigin {
+  transform-origin: bottom center;
+}
+
+.railBottomOrigin {
+  transform-origin: top center;
+}
+
+.railLeftAnchor.railTopOrigin {
+  transform-origin: bottom center;
+}
+
+.railLeftAnchor.railBottomOrigin {
+  transform-origin: top center;
+}
+
+.railRightAnchor:global(.profile-action-rail).rail {
+  --tm-popover-nub-left: 12px;
+}
+
+.railLeftAnchor:global(.profile-action-rail).rail {
+  --tm-popover-nub-left: calc(100% - 22px);
+}
+
+.railTopOrigin:global(.profile-action-rail).rail {
+  --tm-popover-nub-top: calc(100% - 8px);
+}
+
+.railBottomOrigin:global(.profile-action-rail).rail {
+  --tm-popover-nub-top: -10px;
+}
+
+.popoverAnchorNub {
+  position: absolute;
+  left: var(--tm-popover-nub-left, 12px);
+  top: var(--tm-popover-nub-top, -10px);
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+  border: 1px solid color-mix(in oklab, var(--active-ring, rgba(138, 198, 244, 0.52)) 46%, rgba(255, 255, 255, 0.66));
+  background:
+    radial-gradient(94% 76% at 24% 18%, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.16) 66%, rgba(166, 205, 247, 0.26)),
+    linear-gradient(168deg, rgba(255, 255, 255, 0.28), rgba(191, 220, 249, 0.16));
+  box-shadow:
+    0 6px 14px rgba(17, 41, 77, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+  transform: rotate(45deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+:global(body[data-tm-tone='dark']) .popoverAnchorNub {
+  border-color: color-mix(in oklab, var(--active-ring, rgba(127, 198, 255, 0.56)) 54%, rgba(236, 248, 255, 0.28));
+  background:
+    radial-gradient(96% 72% at 24% 18%, rgba(220, 236, 255, 0.32), rgba(220, 236, 255, 0.08) 68%, rgba(88, 132, 184, 0.22)),
+    linear-gradient(168deg, rgba(43, 63, 90, 0.82), rgba(27, 43, 65, 0.9));
+  box-shadow:
+    0 6px 14px rgba(4, 10, 20, 0.52),
+    inset 0 1px 0 rgba(220, 236, 255, 0.2);
+}
+
+.signatureCard {
+  width: min(220px, 100%);
+  margin: 0.16rem 0 0.04rem;
+  border: 1px solid color-mix(in oklab, var(--active-ring, rgba(101, 191, 235, 0.46)) 64%, rgba(208, 232, 251, 0.86));
+  border-radius: 13px;
+  background:
+    linear-gradient(180deg, rgba(247, 252, 255, 0.94), rgba(229, 242, 253, 0.8)) padding-box,
+    linear-gradient(132deg, rgba(255, 214, 129, 0.56), rgba(131, 203, 253, 0.4)) border-box;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.3rem 0.46rem;
+  color: #1d446c;
+  text-align: left;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    0 8px 16px -15px rgba(23, 49, 80, 0.6);
+  transition:
+    transform 170ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 170ms ease,
+    box-shadow 170ms ease;
+}
+
+.signatureCard:hover,
+.signatureCard:focus-visible {
+  transform: translateY(-1px);
+  border-color: color-mix(in oklab, var(--active-ring, rgba(101, 191, 235, 0.78)) 74%, rgba(255, 218, 143, 0.76));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.76),
+    0 12px 18px -15px rgba(17, 44, 74, 0.72);
+}
+
+.signatureCard:focus-visible {
+  outline: 2px solid rgba(96, 181, 233, 0.88);
+  outline-offset: 2px;
+}
+
+.signatureCardUnset {
+  opacity: 0.94;
+}
+
+.signaturePreview {
+  width: 20px;
+  height: 20px;
+  border-radius: 7px;
+  border: 1px solid rgba(174, 208, 237, 0.76);
+  background-color: rgba(236, 248, 255, 0.9);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 60px 20px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.signaturePreviewFallback {
+  background-image: radial-gradient(circle at 34% 30%, rgba(255, 247, 222, 0.98), rgba(246, 218, 153, 0.9));
+}
+
+.signatureMeta {
+  min-width: 0;
+  display: grid;
+  gap: 0.02rem;
+}
+
+.signatureEyebrow {
+  font-size: 0.52rem;
+  line-height: 1.04;
+  font-weight: 830;
+  letter-spacing: 0.07em;
+  color: #617c99;
+  text-transform: uppercase;
+}
+
+.signatureName {
+  min-width: 0;
+  font-size: 0.67rem;
+  line-height: 1.08;
+  font-weight: 770;
+  letter-spacing: 0.015em;
+  color: #1b456f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:global(body[data-tm-tone='dark']) .signatureCard {
+  border-color: color-mix(in oklab, var(--active-ring, rgba(127, 198, 255, 0.5)) 68%, rgba(239, 199, 122, 0.42));
+  background:
+    linear-gradient(180deg, rgba(39, 56, 80, 0.92), rgba(21, 35, 54, 0.88)) padding-box,
+    linear-gradient(132deg, rgba(231, 189, 112, 0.4), rgba(99, 163, 219, 0.56)) border-box;
+  color: #d6e9ff;
+  box-shadow:
+    inset 0 1px 0 rgba(228, 241, 255, 0.18),
+    0 10px 18px -14px rgba(4, 10, 20, 0.82);
+}
+
+:global(body[data-tm-tone='dark']) .signaturePreview {
+  border-color: rgba(118, 157, 202, 0.72);
+  background-color: rgba(30, 46, 69, 0.9);
+}
+
+:global(body[data-tm-tone='dark']) .signaturePreviewFallback {
+  background-image: radial-gradient(circle at 34% 30%, rgba(241, 208, 142, 0.94), rgba(164, 122, 62, 0.88));
+}
+
+:global(body[data-tm-tone='dark']) .signatureEyebrow {
+  color: #9fb9d4;
+}
+
+:global(body[data-tm-tone='dark']) .signatureName {
+  color: #d8ebff;
+}
+
+/* ── Profile header ─────────────────────────────────────── */
+.profileHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.28rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.profileDisplayName {
+  font-size: 0.61rem;
+  font-weight: 790;
+  letter-spacing: 0.02em;
+  color: #1b446f;
+  text-align: center;
+  max-width: 62px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.15;
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-3px);
+  transition:
+    opacity 240ms ease,
+    max-height 220ms cubic-bezier(0.22, 0.86, 0.22, 1),
+    transform 260ms cubic-bezier(0.22, 0.86, 0.22, 1);
+}
+
+:global(.from-sidebar.is-open) .profileDisplayName {
+  opacity: 1;
+  max-height: 22px;
+  transform: translateY(0);
+  transition-delay: 210ms;
+}
+
+:global(body[data-tm-tone='dark']) .profileDisplayName {
+  color: #cde3ff;
+}
