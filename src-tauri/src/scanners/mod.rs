@@ -1,0 +1,9 @@
+pub mod battle_net_scanner;
+pub mod epic_scanner;
+pub mod emulator_scanner;
+pub mod rom_import_scanner;
+pub mod registry_scanner;
+pub mod rom_scanner;
+pub mod screenshot_scanner;
+pub mod steam_scanner;
+pub mod windows_special_scanner;

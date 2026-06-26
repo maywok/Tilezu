@@ -1,0 +1,16 @@
+export { default as settingsSelectTabSound } from './settingsSelectTab.wav'
+export { default as settingsSwitchOptionSound } from './settingsSwitchOption.wav'
+export { default as settingsHoverSound } from './settingsHover.wav'
+export { default as iconVineSound } from './iconVine.wav'
+export { default as systemCollageSound } from './systemCollage.wav'
+export { default as settingsErrorSound } from './settingsError.wav'
+export { default as settingsSliderSound } from './settingsSlider.wav'
+
+export type SettingsUiSoundKind =
+  | 'selectTab'
+  | 'switchOption'
+  | 'hover'
+  | 'slider'
+  | 'iconVine'
+  | 'systemCollage'
+  | 'error'

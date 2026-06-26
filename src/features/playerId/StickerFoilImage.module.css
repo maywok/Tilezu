@@ -1,0 +1,83 @@
+.foilWrap {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  isolation: isolate;
+  filter:
+    drop-shadow(0 0 0 rgba(255, 255, 255, 0.98))
+    drop-shadow(0 0 1px rgba(255, 255, 255, 0.96))
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.88))
+    drop-shadow(0 1px 2px rgba(8, 14, 24, 0.28));
+}
+
+.foilImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.foilImagePixel {
+  image-rendering: pixelated;
+  filter: contrast(1.08) saturate(0.82) brightness(0.96);
+  transform: scale(1.04);
+}
+
+.stickerSpecular,
+.stickerPolychrome {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.foilHolographic .stickerSpecular {
+  z-index: 2;
+  opacity: 0.72;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.75) 24%, rgba(140, 220, 255, 0.4) 48%, rgba(255, 160, 220, 0.38) 68%, rgba(255, 255, 255, 0.55) 100%);
+  mix-blend-mode: screen;
+  animation: foilHoloShift 5.6s ease-in-out infinite alternate;
+}
+
+.foilHolographic .stickerPolychrome {
+  z-index: 1;
+  opacity: 0.48;
+  background: linear-gradient(180deg, rgba(255, 120, 180, 0.72) 0%, rgba(88, 223, 255, 0.64) 24%, rgba(255, 220, 120, 0.66) 100%);
+  mix-blend-mode: screen;
+  animation: foilHoloShift 7s ease-in-out infinite alternate-reverse;
+}
+
+.foilAurora .stickerSpecular {
+  opacity: 0.55;
+  background: radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.55) 0 22%, transparent 58%);
+  mix-blend-mode: screen;
+  animation: foilAuroraPulse 4.8s ease-in-out infinite alternate;
+}
+
+.foilRipple .stickerPolychrome {
+  opacity: 0.42;
+  background: repeating-linear-gradient(125deg, rgba(255, 255, 255, 0.08) 0 6px, rgba(255, 255, 255, 0.28) 6px 10px);
+  mix-blend-mode: overlay;
+  animation: foilRippleDrift 7s linear infinite;
+}
+
+@keyframes foilHoloShift {
+  from { transform: translateX(-8px); }
+  to { transform: translateX(8px); }
+}
+
+@keyframes foilAuroraPulse {
+  from { opacity: 0.33; }
+  to { opacity: 0.77; }
+}
+
+@keyframes foilRippleDrift {
+  from { transform: translate3d(-4px, -2px, 0); }
+  to { transform: translate3d(4px, 2px, 0); }
+}

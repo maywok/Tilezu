@@ -1,0 +1,24 @@
+{ "frames": {
+   "Logo.ase": {
+    "frame": { "x": 0, "y": 0, "w": 120, "h": 120 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 120, "h": 120 },
+    "sourceSize": { "w": 120, "h": 120 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://github.com/LibreSprite/LibreSprite/",
+  "version": "1.1-dev",
+  "image": "C:\\Users\\mason\\Documents\\Tile Manager\\src\\assets\\rungo\\base\\Logo.png",
+  "format": "RGBA8888",
+  "size": { "w": 120, "h": 120 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Flattened", "opacity": 255, "blendMode": "normal" }
+  ]
+ }
+}
