@@ -30,7 +30,7 @@ Windows may show SmartScreen for unsigned apps. That is normal for indie builds.
 - Local-first: works without an online account
 
 <details>
-<summary><strong>Build from source</strong> (developers)</summary>
+<summary><strong>Build from source</strong> (developer)</summary>
 
 Prerequisites: [Node.js](https://nodejs.org/) LTS, [Rust](https://rustup.rs/), and [Tauri prerequisites for Windows](https://v2.tauri.app/start/prerequisites/).
 
